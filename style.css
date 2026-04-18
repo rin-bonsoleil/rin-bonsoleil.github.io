@@ -1,0 +1,127 @@
+/* 基本設定 */
+body {
+    font-family: 'Noto Serif JP', 'Roboto', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    color: #333; /* 暗めの色 */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ヘッダー */
+.main-header {
+    background-color: #f8f8f8; /* 明るい背景 */
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.site-title {
+    margin: 0;
+    font-size: 2em;
+    color: #8B4513; /* キーカラーのもみじ色（茶系） */
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+.main-nav li a:hover {
+    color: #CD5C5C; /* アクセントカラーの真っ赤なもみじ色 */
+}
+
+/* ハンバーガーメニュー (モバイル用、最初は非表示) */
+.hamburger-menu {
+    display: none; /* デスクトップでは非表示 */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* ヒーローセクション */
+.hero-section {
+    background-color: #CD5C5C; /* 仮の背景色、もみじ色（少し明るめ） */
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    min-height: 400px; /* 最小の高さ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('path/to/your/hero-image.jpg'); /* ヒーロー画像があれば設定 */
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-catchphrase {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-family: 'Noto Serif JP', serif;
+}
+
+.accent-text {
+    color: #FF4500; /* アクセントカラーの真っ赤なもみじ色 */
+    font-weight: bold;
+}
+
+.hero-description {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #FF4500; /* アクセントカラー */
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #E63900; /* ホバー時の色 */
+}
+
+/* モバイル対応（簡易版） */
+@media (max-width: 768px) {
+    .main-nav {
+        display: none; /* ナビメニューは非表示 */
+    }
+    .hamburger-menu {
+        display: flex; /* ハンバーガーメニューを表示 */
+    }
+    .hero-catchphrase {
+        font-size: 2.5em;
+    }
+}
