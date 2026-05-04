@@ -133,8 +133,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(13,50,21,0.2), rgba(129,58,19,0.2)); /* グラデーションの透明度をさらに下げる */
+    height: 100%;\n    background: linear-gradient(to bottom, rgba(13,50,21,0.2), rgba(129,58,19,0.2)); /* グラデーションの透明度をさらに下げる */
     z-index: 1;
 }
 
@@ -153,7 +152,7 @@ body {
 }
 
 .hero-catchphrase {
-    font-size: 2.8em; /* フォントサイズを一つ下げる */
+    font-size: 2.5em; /* フォントサイズをさらに調整 (2.8em から変更) */
     margin-bottom: 20px;
     line-height: 1.2;
     font-family: 'Noto Serif JP', serif;
@@ -161,7 +160,7 @@ body {
 }
 
 .accent-text {
-    color: var(--color-light-green); /* ここを淡い黄緑色に変更 */
+    color: var(--color-gold); /* ここを山吹色に変更 (#ffc300) */
     font-weight: bold;
 }
 
