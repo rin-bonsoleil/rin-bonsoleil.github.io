@@ -9,23 +9,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ヒーロースライドショーのコード
-    const heroImages = document.querySelectorAll('.hero-image');
-    let currentImageIndex = 0;
+    // ヒーロースライドショーのコード (画像のペアを切り替える)
+    const heroImagePairs = document.querySelectorAll('.hero-image-pair');
+    let currentPairIndex = 0;
 
-    function showNextImage() {
-        // アクティブな画像をフェードアウトさせる前に、次の画像を準備する
-        const nextImageIndex = (currentImageIndex + 1) % heroImages.length;
-
-        heroImages[currentImageIndex].classList.remove('active');
-        heroImages[nextImageIndex].classList.add('active');
-        
-        currentImageIndex = nextImageIndex;
+    function showNextPair() {
+        heroImagePairs[currentPairIndex].classList.remove('active');
+        currentPairIndex = (currentPairIndex + 1) % heroImagePairs.length;
+        heroImagePairs[currentPairIndex].classList.add('active');
     }
 
-    // 最初の画像をアクティブにする
-    if (heroImages.length > 0) {
-        heroImages[0].classList.add('active');
-        setInterval(showNextImage, 5000); // 5秒ごとに画像を切り替える
+    // 最初の画像のペアをアクティブにする
+    if (heroImagePairs.length > 0) {
+        heroImagePairs[0].classList.add('active');
+        setInterval(showNextPair, 5000); // 5秒ごとに画像のペアを切り替える
     }
 });

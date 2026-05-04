@@ -82,8 +82,7 @@ body {
     min-height: 600px; /* 最小の高さ */
     overflow: hidden;
     display: flex;
-    flex-direction: column; /* 縦方向に並べる */
-    justify-content: flex-start; /* 上部に寄せる */
+    justify-content: center;
     align-items: center;
     color: var(--color-light-green);
     text-align: center;
@@ -91,39 +90,61 @@ body {
     padding: 0; /* 余白をリセット */
 }
 
-.hero-image-area {
+/* ヒーローセクション全体のコンテンツエリア */
+.hero-main-content {
+    display: flex;
+    flex-wrap: wrap; /* 小さい画面で折り返す */
+    width: 100%;
+    max-width: 1200px; /* コンテンツの最大幅 */
+    margin: 0 auto;
+    background-color: var(--color-deep-green); /* 背景色 */
     position: relative;
-    width: 100%;
-    height: 300px; /* 画像エリアの高さ */
+    z-index: 1;
+}
+
+.hero-image-area {
+    flex: 1; /* 利用可能なスペースを占める */
+    min-width: 300px; /* 最小幅 */
+    height: 400px; /* 画像エリアの高さ */
+    position: relative;
     overflow: hidden;
-    z-index: -2;
 }
 
-.hero-slideshow {
+.hero-slideshow-wrapper {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    display: flex;
+    overflow: hidden;
 }
 
-.hero-image {
-    position: absolute;
-    top: 0;
-    left: 0;
+.hero-image-pair {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    display: flex;
     opacity: 0;
+    position: absolute;
     transition: opacity 1s ease-in-out;
+    background-color: var(--color-dark-brown); /* 画像読み込み中の背景色 */
 }
 
-.hero-image.active {
+.hero-image-pair.active {
     opacity: 1;
 }
 
-/* グラデーションオーバーレイを画像エリアに適用 */
+.hero-image-pair .hero-image {
+    flex: 1;
+    width: 50%; /* 2枚の画像を横に並べる */
+    height: 100%;
+    object-fit: contain; /* 画像全体が見えるように */
+    display: block;
+    margin: auto; /* 中央寄せ */
+    filter: brightness(1.1) saturate(1.1); /* 明るさと彩度を少し上げる */
+}
+
+/* 画像エリアのグラデーションオーバーレイ */
 .hero-image-area::before {
     content: '';
     position: absolute;
@@ -131,17 +152,20 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(13,50,21,0.6), rgba(129,58,19,0.6)); /* 深緑から茶色へのグラデーション */
+    /* グラデーションの透明度を調整 (rgbaの最後の数値を0.6から0.3に減らすなど) */
+    background: linear-gradient(to bottom, rgba(13,50,21,0.3), rgba(129,58,19,0.3));
     z-index: 0;
 }
 
 .hero-content-area {
-    position: relative;
-    width: 100%;
+    flex: 1; /* 利用可能なスペースを占める */
+    min-width: 300px; /* 最小幅 */
     padding: 40px 20px;
     background-color: var(--color-deep-green); /* コンテンツエリアの背景色 */
     color: var(--color-light-green); /* コンテンツエリアの文字色 */
-    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-content {
@@ -215,13 +239,24 @@ body {
     .hamburger-menu {
         display: flex;
     }
-    .hero-catchphrase {
-        font-size: 2.5em;
+    .hero-main-content {
+        flex-direction: column; /* モバイルでは縦並び */
+    }
+    .hero-image-area,
+    .hero-content-area {
+        width: 100%;
+        min-width: auto;
     }
     .hero-image-area {
-        height: 200px; /* モバイルでの画像エリアの高さ調整 */
+        height: 250px; /* モバイルでの画像エリアの高さ調整 */
+    }
+    .hero-image-pair .hero-image {
+        height: auto; /* 高さを自動調整 */
     }
     .hero-content-area {
         padding: 30px 15px;
+    }
+    .hero-catchphrase {
+        font-size: 2.5em;
     }
 }
