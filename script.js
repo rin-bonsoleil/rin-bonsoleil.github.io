@@ -9,32 +9,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ヒーロースライドショーのコード (左右独立)
-    const heroImagesLeft = document.querySelectorAll('.hero-slideshow-left .hero-single-image');
-    const heroImagesRight = document.querySelectorAll('.hero-slideshow-right .hero-single-image');
+    // ヒーロースライドショーのコード (2つのスライドショーが連動して切り替わる)
+    const heroImagesLeft = document.querySelectorAll('.hero-slideshow-wrapper.left .hero-single-image');
+    const heroImagesRight = document.querySelectorAll('.hero-slideshow-wrapper.right .hero-single-image');
 
-    let currentLeftIndex = 0;
-    let currentRightIndex = 0;
+    let currentImageIndex = 0;
 
-    function showNextLeftImage() {
-        heroImagesLeft[currentLeftIndex].classList.remove('active');
-        currentLeftIndex = (currentLeftIndex + 1) % heroImagesLeft.length;
-        heroImagesLeft[currentLeftIndex].classList.add('active');
-    }
+    function showNextImages() {
+        // 現在アクティブな画像を非アクティブにする
+        heroImagesLeft[currentImageIndex].classList.remove('active');
+        heroImagesRight[currentImageIndex].classList.remove('active');
 
-    function showNextRightImage() {
-        heroImagesRight[currentRightIndex].classList.remove('active');
-        currentRightIndex = (currentRightIndex + 1) % heroImagesRight.length;
-        heroImagesRight[currentRightIndex].classList.add('active');
+        // 次の画像インデックスを計算
+        currentImageIndex = (currentImageIndex + 1) % heroImagesLeft.length; // 左右で枚数が同じ前提
+
+        // 次の画像をアクティブにする
+        heroImagesLeft[currentImageIndex].classList.add('active');
+        heroImagesRight[currentImageIndex].classList.add('active');
     }
 
     // 最初の画像をアクティブにする
-    if (heroImagesLeft.length > 0) {
+    if (heroImagesLeft.length > 0 && heroImagesRight.length > 0) {
         heroImagesLeft[0].classList.add('active');
-        setInterval(showNextLeftImage, 5000); // 5秒ごとに画像を切り替える
-    }
-    if (heroImagesRight.length > 0) {
         heroImagesRight[0].classList.add('active');
-        setInterval(showNextRightImage, 5000); // 5秒ごとに画像を切り替える
+        setInterval(showNextImages, 5000); // 5秒ごとに画像を切り替える
     }
 });
