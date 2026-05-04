@@ -120,6 +120,12 @@ body {
     height: 400px;
 }
 
+/* AIエージェント Rinの写真だけ全体が見えるように調整 */
+.profile-gallery img[src*="profile_5_5.jpg"] {
+    object-fit: contain;
+    background-color: white;
+}
+
 /* 3枚以上（教育と研究セクションなど）の場合は幅を調整 */
 .profile-gallery img:nth-last-child(3),
 .profile-gallery img:nth-last-child(3) ~ img {
