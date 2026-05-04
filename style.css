@@ -28,6 +28,122 @@ body {
     align-items: center;
 }
 
+.container.column {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* セクション共通タイトル */
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 60px 0 40px;
+    font-family: 'Noto Serif JP', serif;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-deep-red);
+}
+
+/* プロフィールセクション */
+.profile-section {
+    padding: 80px 0;
+    color: var(--color-light-green);
+}
+
+.profile-row {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+    align-items: center;
+}
+
+.profile-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.profile-text {
+    flex: 1;
+}
+
+.profile-text h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: var(--color-gold);
+    border-left: 4px solid var(--color-deep-red);
+    padding-left: 15px;
+}
+
+.profile-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.profile-gallery {
+    flex: 1;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.profile-gallery img {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+/* 複数写真がある場合の調整 */
+.profile-gallery img:only-child {
+    max-width: 500px;
+    height: 400px;
+}
+
+.profile-gallery img:not(:only-child) {
+    width: calc(50% - 8px);
+}
+
+.profile-message {
+    text-align: center;
+    margin-top: 40px;
+    padding: 40px;
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(192, 240, 200, 0.2);
+}
+
+.profile-message h3 {
+    color: var(--color-gold);
+    font-size: 2em;
+    margin-bottom: 25px;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .profile-row, .profile-row.reverse {
+        flex-direction: column;
+    }
+    .profile-gallery img {
+        height: auto;
+    }
+    .profile-gallery img:not(:only-child) {
+        width: 100%;
+    }
+}
+
+
 /* ヘッダー */
 .main-header {
     background-color: var(--color-medium-brown); /* メインのもみじ色（茶系） */
