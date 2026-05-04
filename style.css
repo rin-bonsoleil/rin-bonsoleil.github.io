@@ -112,7 +112,47 @@ body {
 }
 
 
+.profile-links {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 0.95em;
+}
+
+.profile-links a {
+    color: var(--color-light-green);
+    text-decoration: underline;
+}
+
+.column-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.column-links li a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: var(--color-medium-brown);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--color-light-peach);
+}
+
+.profile-gallery img.full-width {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
 /* 複数写真がある場合の調整 */
+.profile-gallery {
+    flex-wrap: wrap;
+}
+
 .profile-gallery img:only-child {
     max-width: 500px;
     height: 400px;
