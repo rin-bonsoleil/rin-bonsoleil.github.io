@@ -5,7 +5,7 @@
     --color-medium-brown: #813a13;  /* 茶色 - メインカラー */
     --color-light-peach: #fde6dc;   /* 薄いピーチ/ピンク - サブカラー、暖色系文字色 */
     --color-gold: #ffc300;          /* 山吹色/ゴールド - アクセント、装飾 */
-    --color-light-green: #c0f0c8;   /* 淡い黄緑色 - サubカラー、自然系文字色 */
+    --color-light-green: #c0f0c8;   /* 淡い黄緑色 - サブカラー、自然系文字色 */
     --color-deep-green: #0d3215;    /* 深緑色 - ベースカラー、背景 */
     --color-accent-red-maple: #FF4500; /* 真っ赤なもみじ色 - 強調アクセント */
 }
@@ -15,8 +15,8 @@ body {
     font-family: 'Noto Serif JP', 'Roboto', sans-serif;
     margin: 0;
     line-height: 1.6;
-    color: var(--color-dark-brown); /* テキストの基本色 */
-    background-color: var(--color-deep-green); /* サイト全体の背景色 */
+    color: var(--color-dark-brown);
+    background-color: var(--color-deep-green);
 }
 
 .container {
@@ -41,6 +41,7 @@ body {
     font-family: 'Noto Serif JP', serif;
     position: relative;
     padding-bottom: 15px;
+    color: var(--color-light-peach);
 }
 
 .section-title::after {
@@ -88,65 +89,7 @@ body {
     line-height: 1.8;
 }
 
-.profile-gallery {
-    flex: 1;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-}
-
-.profile-gallery {
-    flex: 1.2;
-    display: flex;
-    gap: 15px;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.profile-gallery img {
-    width: calc(50% - 7.5px); /* 2枚並びの場合の幅を正確に指定 */
-    max-width: 400px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    border: 2px solid rgba(255,255,255,0.1);
-}
-
-/* 1枚のみの場合は大きく */
-.profile-gallery img:only-child {
-    width: 100%;
-    max-width: 500px;
-    height: 400px;
-}
-
-/* AIエージェント Rinの写真だけ全体が見えるように調整 */
-.profile-gallery img[src*="profile_5_5.jpg"] {
-    object-fit: contain;
-    background-color: white;
-}
-
-/* 3枚以上（教育と研究セクションなど）の場合は幅を調整 */
-.profile-gallery img:nth-last-child(3),
-.profile-gallery img:nth-last-child(3) ~ img {
-    width: calc(33.33% - 10px);
-    height: 200px;
-}
-
-/* ダンス写真（趣味と情熱）の特別な調整 */
-.dance-gallery {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.dance-gallery img.full-width {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-
+/* 研究リンク */
 .profile-links {
     margin-top: 20px;
     padding: 15px;
@@ -156,7 +99,7 @@ body {
 }
 
 .profile-links a {
-    color: var(--color-gold); /* リンクを目立たせる */
+    color: var(--color-gold);
     font-weight: bold;
     text-decoration: underline;
 }
@@ -167,6 +110,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin-top: 10px;
 }
 
 .column-links li a {
@@ -176,26 +120,61 @@ body {
     border-radius: 4px;
     text-decoration: none;
     color: var(--color-light-peach);
+    font-weight: normal;
 }
 
-.profile-gallery img.full-width {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-}
-
-/* 複数写真がある場合の調整 */
+/* ギャラリー基本設定 */
 .profile-gallery {
-    flex-wrap: wrap;
+    flex: 1.2;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap; /* デスクトップでは横並び固定 */
 }
 
+.profile-gallery img {
+    width: calc(50% - 7.5px);
+    max-width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+/* 1枚のみ */
 .profile-gallery img:only-child {
+    width: 100%;
     max-width: 500px;
     height: 400px;
 }
 
-.profile-gallery img:not(:only-child) {
-    width: calc(50% - 8px);
+/* 3枚以上 */
+.profile-gallery img:nth-last-child(3),
+.profile-gallery img:nth-last-child(3) ~ img {
+    width: calc(33.33% - 10px);
+    height: 200px;
+}
+
+/* りんちゃんのイラスト特別設定 */
+.profile-gallery img[src*="profile_5_5.jpg"] {
+    object-fit: contain !important;
+    background-color: white;
+}
+
+/* ダンス写真の独立設定 */
+.dance-gallery {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.dance-gallery img.full-width {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
 }
 
 .profile-message {
@@ -213,23 +192,9 @@ body {
     margin-bottom: 25px;
 }
 
-/* モバイル対応 */
-@media (max-width: 768px) {
-    .profile-row, .profile-row.reverse {
-        flex-direction: column;
-    }
-    .profile-gallery img {
-        height: auto;
-    }
-    .profile-gallery img:not(:only-child) {
-        width: 100%;
-    }
-}
-
-
 /* ヘッダー */
 .main-header {
-    background-color: var(--color-medium-brown); /* メインのもみじ色（茶系） */
+    background-color: var(--color-medium-brown);
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
@@ -237,7 +202,7 @@ body {
 .site-title {
     margin: 0;
     font-size: 2em;
-    color: var(--color-light-peach); /* 暖色系文字色を仮で適用 */
+    color: var(--color-light-peach);
 }
 
 .main-nav ul {
@@ -249,29 +214,14 @@ body {
 
 .main-nav li a {
     text-decoration: none;
-    color: var(--color-light-peach); /* 暖色系文字色を仮で適用 */
+    color: var(--color-light-peach);
     font-weight: bold;
     padding: 10px 15px;
     transition: color 0.3s ease;
 }
 
 .main-nav li a:hover {
-    color: var(--color-accent-red-maple); /* 真っ赤なもみじ色 */
-}
-
-/* ハンバーガーメニュー (モバイル用、最初は非表示) */
-.hamburger-menu {
-    display: none; /* デスクトップでは非表示 */
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.hamburger-menu .bar {
-    width: 25px;
-    height: 3px;
-    background-color: var(--color-dark-brown); /* ハンバーガーメニューの色 */
-    margin: 4px 0;
-    transition: 0.4s;
+    color: var(--color-accent-red-maple);
 }
 
 /* ヒーローセクション */
@@ -280,28 +230,28 @@ body {
     width: 100%;
     overflow: hidden;
     display: flex;
-    flex-direction: column; /* 画像エリアとコンテンツエリアを縦に並べる */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1;
     padding: 0;
-    background-color: var(--color-deep-green); /* 全体の背景色 */
+    background-color: var(--color-deep-green);
 }
 
 .hero-images-and-overlay {
     position: relative;
     width: 100%;
-    height: 50vh; /* 画面の高さの50%を使う */
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background-color: var(--color-dark-brown); /* 画像読み込み中の背景色 */
+    background-color: var(--color-dark-brown);
 }
 
 .hero-slideshow-wrapper {
     position: relative;
-    width: 50%; /* 2つのスライドショーを横に並べる */
+    width: 50%;
     height: 100%;
     overflow: hidden;
     display: flex;
@@ -315,17 +265,16 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* 画像全体が見えるように */
+    object-fit: contain;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    filter: brightness(1.15) saturate(1.15); /* 明るさと彩度をさらに上げる */
+    filter: brightness(1.15) saturate(1.15);
 }
 
 .hero-single-image.active {
     opacity: 1;
 }
 
-/* 各スライドショーにグラデーションオーバーレイを適用 */
 .hero-slideshow-wrapper::before {
     content: '';
     position: absolute;
@@ -333,17 +282,17 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(13,50,21,0.2), rgba(129,58,19,0.2)); /* グラデーションの透明度をさらに下げる */
+    background: linear-gradient(to bottom, rgba(13,50,21,0.2), rgba(129,58,19,0.2));
     z-index: 1;
 }
 
 .hero-content-area {
     width: 100%;
     padding: 40px 20px;
-    background-color: var(--color-deep-green); /* コンテンツエリアの背景色 */
-    color: var(--color-light-green); /* コンテンツエリアの文字色 */
+    background-color: var(--color-deep-green);
+    color: var(--color-light-green);
     text-align: center;
-    z-index: 2; /* 文字を画像の上に表示しないため、画像よりZ-indexを低くする必要はない */
+    z-index: 2;
 }
 
 .hero-content {
@@ -352,7 +301,7 @@ body {
 }
 
 .hero-catchphrase {
-    font-size: 2.1em; /* フォントサイズをさらに調整 (2.5em から変更) */
+    font-size: 2.1em;
     margin-bottom: 20px;
     line-height: 1.2;
     font-family: 'Noto Serif JP', serif;
@@ -360,7 +309,7 @@ body {
 }
 
 .accent-text {
-    color: var(--color-gold); /* ここを山吹色に変更 (#ffc300) */
+    color: var(--color-gold);
     font-weight: bold;
 }
 
@@ -387,8 +336,8 @@ body {
 
 /* フッター */
 .main-footer {
-    background-color: var(--color-dark-brown); /* フッターもメインカラーに */
-    color: var(--color-light-peach); /* 暖色系文字色 */
+    background-color: var(--color-dark-brown);
+    color: var(--color-light-peach);
     text-align: center;
     padding: 20px 0;
     font-size: 0.9em;
@@ -400,42 +349,39 @@ body {
 }
 
 .main-footer a {
-    color: var(--color-light-peach); /* 暖色系文字色 */
+    color: var(--color-light-peach);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .main-footer a:hover {
-    color: var(--color-gold); /* ホバー時に山吹色 */
+    color: var(--color-gold);
 }
 
-/* モバイル対応（簡易版） */
+/* モバイル対応 */
 @media (max-width: 768px) {
-    .main-nav {
-        display: none;
+    .profile-row, .profile-row.reverse {
+        flex-direction: column;
     }
-    .hamburger-menu {
-        display: flex;
+    .profile-gallery {
+        flex-wrap: wrap; /* モバイルでは縦並びを許可 */
+    }
+    .profile-gallery img {
+        width: 100% !important;
+        height: auto;
     }
     .hero-section {
-        height: auto; /* 高さを自動調整 */
-        min-height: 100vh; /* 画面いっぱいに広げる */
+        height: auto;
+        min-height: 100vh;
     }
     .hero-images-and-overlay {
-        height: 50vh; /* モバイルでの画像エリアの高さ調整 */
+        height: 50vh;
     }
     .hero-slideshow-wrapper {
-        width: 100%; /* モバイルでは画像を一つずつ表示 */
-        height: 100%;
-    }
-    .hero-single-image {
         width: 100%;
         height: 100%;
     }
-    .hero-content-area {
-        padding: 30px 15px;
-    }
     .hero-catchphrase {
-        font-size: 2.5em;
+        font-size: 1.8em;
     }
 }
