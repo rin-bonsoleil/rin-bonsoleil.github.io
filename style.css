@@ -1,9 +1,22 @@
+/* CSSカスタムプロパティ（CSS変数）の定義 */
+:root {
+    --color-dark-brown: #280706;    /* 黒茶色 - テキスト、ディテール */
+    --color-deep-red: #ae1f23;      /* 濃い赤色 - アクセント、ボタン */
+    --color-medium-brown: #813a13;  /* 茶色 - メインカラー */
+    --color-light-peach: #fde6dc;   /* 薄いピーチ/ピンク - サブカラー、暖色系文字色 */
+    --color-gold: #ffc300;          /* 山吹色/ゴールド - アクセント、装飾 */
+    --color-light-green: #c0f0c8;   /* 淡い黄緑色 - サブカラー、自然系文字色 */
+    --color-deep-green: #0d3215;    /* 深緑色 - ベースカラー、背景 */
+    --color-accent-red-maple: #FF4500; /* 真っ赤なもみじ色 - 強調アクセント */
+}
+
 /* 基本設定 */
 body {
     font-family: 'Noto Serif JP', 'Roboto', sans-serif;
     margin: 0;
     line-height: 1.6;
-    color: #333; /* 暗めの色 */
+    color: var(--color-dark-brown); /* テキストの基本色 */
+    background-color: var(--color-deep-green); /* サイト全体の背景色 */
 }
 
 .container {
@@ -17,15 +30,15 @@ body {
 
 /* ヘッダー */
 .main-header {
-    background-color: #f8f8f8; /* 明るい背景 */
+    background-color: var(--color-medium-brown); /* メインのもみじ色（茶系） */
     padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .site-title {
     margin: 0;
     font-size: 2em;
-    color: #8B4513; /* キーカラーのもみじ色（茶系） */
+    color: var(--color-light-peach); /* 暖色系文字色を仮で適用 */
 }
 
 .main-nav ul {
@@ -37,14 +50,14 @@ body {
 
 .main-nav li a {
     text-decoration: none;
-    color: #555;
+    color: var(--color-light-peach); /* 暖色系文字色を仮で適用 */
     font-weight: bold;
     padding: 10px 15px;
     transition: color 0.3s ease;
 }
 
 .main-nav li a:hover {
-    color: #CD5C5C; /* アクセントカラーの真っ赤なもみじ色 */
+    color: var(--color-accent-red-maple); /* 真っ赤なもみじ色 */
 }
 
 /* ハンバーガーメニュー (モバイル用、最初は非表示) */
@@ -64,21 +77,36 @@ body {
 
 /* ヒーローセクション */
 .hero-section {
-    background-color: #CD5C5C; /* 仮の背景色、もみじ色（少し明るめ） */
-    color: #fff;
+    background-color: var(--color-deep-green); /* パターン2のベースカラーを仮で適用 */
+    color: var(--color-light-green); /* パターン2の文字色を仮で適用 */
     text-align: center;
     padding: 100px 20px;
-    min-height: 400px; /* 最小の高さ */
+    min-height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('path/to/your/hero-image.jpg'); /* ヒーロー画像があれば設定 */
+    /* background-image: url('path/to/your/hero-image.jpg'); */
     background-size: cover;
     background-position: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* 背景グラデーションオーバーレイ */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(13,50,21,0.8), rgba(129,58,19,0.8)); /* 深緑から茶色へのグラデーション */
+    z-index: -1;
 }
 
 .hero-content {
     max-width: 800px;
+    z-index: 1;
 }
 
 .hero-catchphrase {
@@ -86,22 +114,24 @@ body {
     margin-bottom: 20px;
     line-height: 1.2;
     font-family: 'Noto Serif JP', serif;
+    color: var(--color-light-green); /* パターン2の文字色 */
 }
 
 .accent-text {
-    color: #FF4500; /* アクセントカラーの真っ赤なもみじ色 */
+    color: var(--color-accent-red-maple); /* 真っ赤なもみじ色 */
     font-weight: bold;
 }
 
 .hero-description {
     font-size: 1.2em;
     margin-bottom: 40px;
+    color: var(--color-light-green); /* パターン2の文字色 */
 }
 
 .btn-primary {
     display: inline-block;
-    background-color: #FF4500; /* アクセントカラー */
-    color: #fff;
+    background-color: var(--color-deep-red); /* 濃い赤色 - アクセントボタン */
+    color: var(--color-light-peach); /* 暖色系文字色 */
     padding: 15px 30px;
     text-decoration: none;
     border-radius: 5px;
@@ -110,42 +140,31 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #E63900; /* ホバー時の色 */
-}
-
-/* モバイル対応（簡易版） */
-@media (max-width: 768px) {
-    .main-nav {
-        display: none; /* ナビメニューは非表示 */
-    }
-    .hamburger-menu {
-        display: flex; /* ハンバーガーメニューを表示 */
-    }
-    .hero-catchphrase {
-        font-size: 2.5em;
-    }
+    background-color: var(--color-accent-red-maple); /* ホバー時のアクセントカラー */
 }
 
 /* フッター */
 .main-footer {
-    background-color: #333; /* 暗めの背景 */
-    color: #fff;
+    background-color: var(--color-dark-brown); /* フッターもメインカラーに */
+    color: var(--color-light-peach); /* 暖色系文字色 */
     text-align: center;
     padding: 20px 0;
     font-size: 0.9em;
 }
 
 .main-footer .container {
-    flex-direction: column; /* 縦並びにする */
-    gap: 10px; /* 要素間のスペース */
+    flex-direction: column;
+    gap: 10px;
 }
 
 .main-footer a {
-    color: #fff;
+    color: var(--color-light-peach); /* 暖色系文字色 */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .main-footer a:hover {
-    color: #FFD700; /* ホバー時の色（例えば金色など） */
+    color: var(--color-gold); /* ホバー時に山吹色 */
 }
+
+/* モバイル対応（簡易版）は変更なし */
