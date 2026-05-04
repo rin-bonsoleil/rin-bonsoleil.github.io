@@ -70,43 +70,83 @@ body {
 .hamburger-menu .bar {
     width: 25px;
     height: 3px;
-    background-color: #333;
+    background-color: var(--color-dark-brown); /* ハンバーガーメニューの色 */
     margin: 4px 0;
     transition: 0.4s;
 }
 
 /* ヒーローセクション */
 .hero-section {
-    background-color: var(--color-deep-green); /* パターン2のベースカラーを仮で適用 */
-    color: var(--color-light-green); /* パターン2の文字色を仮で適用 */
-    text-align: center;
-    padding: 100px 20px;
-    min-height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-image: url('path/to/your/hero-image.jpg'); */
-    background-size: cover;
-    background-position: center;
     position: relative;
+    width: 100%;
+    min-height: 600px; /* 最小の高さ */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* 縦方向に並べる */
+    justify-content: flex-start; /* 上部に寄せる */
+    align-items: center;
+    color: var(--color-light-green);
+    text-align: center;
     z-index: 1;
+    padding: 0; /* 余白をリセット */
 }
 
-/* 背景グラデーションオーバーレイ */
-.hero-section::before {
+.hero-image-area {
+    position: relative;
+    width: 100%;
+    height: 300px; /* 画像エリアの高さ */
+    overflow: hidden;
+    z-index: -2;
+}
+
+.hero-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero-image.active {
+    opacity: 1;
+}
+
+/* グラデーションオーバーレイを画像エリアに適用 */
+.hero-image-area::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(13,50,21,0.8), rgba(129,58,19,0.8)); /* 深緑から茶色へのグラデーション */
-    z-index: -1;
+    background: linear-gradient(to bottom, rgba(13,50,21,0.6), rgba(129,58,19,0.6)); /* 深緑から茶色へのグラデーション */
+    z-index: 0;
+}
+
+.hero-content-area {
+    position: relative;
+    width: 100%;
+    padding: 40px 20px;
+    background-color: var(--color-deep-green); /* コンテンツエリアの背景色 */
+    color: var(--color-light-green); /* コンテンツエリアの文字色 */
+    z-index: 1;
 }
 
 .hero-content {
     max-width: 800px;
-    z-index: 1;
+    margin: 0 auto;
 }
 
 .hero-catchphrase {
@@ -114,24 +154,24 @@ body {
     margin-bottom: 20px;
     line-height: 1.2;
     font-family: 'Noto Serif JP', serif;
-    color: var(--color-light-green); /* パターン2の文字色 */
+    color: var(--color-light-green);
 }
 
 .accent-text {
-    color: var(--color-accent-red-maple); /* 真っ赤なもみじ色 */
+    color: var(--color-accent-red-maple);
     font-weight: bold;
 }
 
 .hero-description {
     font-size: 1.2em;
     margin-bottom: 40px;
-    color: var(--color-light-green); /* パターン2の文字色 */
+    color: var(--color-light-green);
 }
 
 .btn-primary {
     display: inline-block;
-    background-color: var(--color-deep-red); /* 濃い赤色 - アクセントボタン */
-    color: var(--color-light-peach); /* 暖色系文字色 */
+    background-color: var(--color-deep-red);
+    color: var(--color-light-peach);
     padding: 15px 30px;
     text-decoration: none;
     border-radius: 5px;
@@ -140,7 +180,7 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: var(--color-accent-red-maple); /* ホバー時のアクセントカラー */
+    background-color: var(--color-accent-red-maple);
 }
 
 /* フッター */
@@ -167,4 +207,21 @@ body {
     color: var(--color-gold); /* ホバー時に山吹色 */
 }
 
-/* モバイル対応（簡易版）は変更なし */
+/* モバイル対応（簡易版） */
+@media (max-width: 768px) {
+    .main-nav {
+        display: none;
+    }
+    .hamburger-menu {
+        display: flex;
+    }
+    .hero-catchphrase {
+        font-size: 2.5em;
+    }
+    .hero-image-area {
+        height: 200px; /* モバイルでの画像エリアの高さ調整 */
+    }
+    .hero-content-area {
+        padding: 30px 15px;
+    }
+}
