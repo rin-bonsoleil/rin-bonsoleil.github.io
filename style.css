@@ -96,21 +96,35 @@ body {
 }
 
 .profile-gallery {
-    flex: 1;
+    flex: 1.2;
     display: flex;
     gap: 15px;
-    justify-content: center;
-    flex-wrap: nowrap; /* 写真を横並びに固定 */
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .profile-gallery img {
-    width: 100%;
+    width: calc(50% - 7.5px); /* 2枚並びの場合の幅を正確に指定 */
     max-width: 400px;
     height: 300px;
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     border: 2px solid rgba(255,255,255,0.1);
+}
+
+/* 1枚のみの場合は大きく */
+.profile-gallery img:only-child {
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+}
+
+/* 3枚以上（教育と研究セクションなど）の場合は幅を調整 */
+.profile-gallery img:nth-last-child(3),
+.profile-gallery img:nth-last-child(3) ~ img {
+    width: calc(33.33% - 10px);
+    height: 200px;
 }
 
 /* ダンス写真（趣味と情熱）の特別な調整 */
