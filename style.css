@@ -79,7 +79,7 @@ body {
 .hero-section {
     position: relative;
     width: 100%;
-    min-height: 600px; /* 最小の高さ */
+    height: 70vh; /* 画面の高さの70%を使う、縦幅を大きくする */
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -87,85 +87,79 @@ body {
     color: var(--color-light-green);
     text-align: center;
     z-index: 1;
-    padding: 0; /* 余白をリセット */
+    padding: 0;
+    background-color: var(--color-deep-green); /* 全体の背景色 */
 }
 
-/* ヒーローセクション全体のコンテンツエリア */
-.hero-main-content {
-    display: flex;
-    flex-wrap: wrap; /* 小さい画面で折り返す */
-    width: 100%;
-    max-width: 1200px; /* コンテンツの最大幅 */
-    margin: 0 auto;
-    background-color: var(--color-deep-green); /* 背景色 */
-    position: relative;
-    z-index: 1;
-}
-
-.hero-image-area {
-    flex: 1; /* 利用可能なスペースを占める */
-    min-width: 300px; /* 最小幅 */
-    height: 400px; /* 画像エリアの高さ */
-    position: relative;
+.hero-image-left,
+.hero-image-right {
+    position: absolute;
+    top: 0;
+    width: 35%; /* 左右の画像エリアの幅 */
+    height: 100%; /* 親要素の高さに合わせる */
     overflow: hidden;
+    z-index: -2; /* コンテンツより後ろ */
 }
 
-.hero-slideshow-wrapper {
+.hero-image-left {
+    left: 0;
+}
+
+.hero-image-right {
+    right: 0;
+}
+
+.hero-slideshow-left,
+.hero-slideshow-right {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-single-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    overflow: hidden;
-}
-
-.hero-image-pair {
-    width: 100%;
-    height: 100%;
-    display: flex;
+    object-fit: contain; /* 画像全体が見えるように */
+    display: block;
     opacity: 0;
-    position: absolute;
     transition: opacity 1s ease-in-out;
     background-color: var(--color-dark-brown); /* 画像読み込み中の背景色 */
+    filter: brightness(1.15) saturate(1.15); /* 明るさと彩度をさらに上げる */
 }
 
-.hero-image-pair.active {
+.hero-single-image.active {
     opacity: 1;
 }
 
-.hero-image-pair .hero-image {
-    flex: 1;
-    width: 50%; /* 2枚の画像を横に並べる */
-    height: 100%;
-    object-fit: contain; /* 画像全体が見えるように */
-    display: block;
-    margin: auto; /* 中央寄せ */
-    filter: brightness(1.1) saturate(1.1); /* 明るさと彩度を少し上げる */
-}
-
-/* 画像エリアのグラデーションオーバーレイ */
-.hero-image-area::before {
+/* 画像エリアのグラデーションオーバーレイは左右の画像エリアにそれぞれ適用 */
+.hero-image-left::before,
+.hero-image-right::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* グラデーションの透明度を調整 (rgbaの最後の数値を0.6から0.3に減らすなど) */
-    background: linear-gradient(to bottom, rgba(13,50,21,0.3), rgba(129,58,19,0.3));
-    z-index: 0;
+    background: linear-gradient(to bottom, rgba(13,50,21,0.2), rgba(129,58,19,0.2)); /* グラデーションの透明度をさらに下げる */
+    z-index: -1; /* 画像より手前、コンテンツより後ろ */
 }
 
 .hero-content-area {
-    flex: 1; /* 利用可能なスペースを占める */
-    min-width: 300px; /* 最小幅 */
+    position: relative;
+    width: 30%; /* コンテンツエリアの幅 */
+    max-width: 600px;
     padding: 40px 20px;
-    background-color: var(--color-deep-green); /* コンテンツエリアの背景色 */
+    background-color: rgba(13, 50, 21, 0.7); /* 深緑色の半透明背景 */
     color: var(--color-light-green); /* コンテンツエリアの文字色 */
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1; /* 画像より手前 */
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); /* 影で浮き上がらせる */
+    border-radius: 8px; /* 角を丸くする */
 }
 
 .hero-content {
@@ -174,7 +168,7 @@ body {
 }
 
 .hero-catchphrase {
-    font-size: 3.5em;
+    font-size: 3em;
     margin-bottom: 20px;
     line-height: 1.2;
     font-family: 'Noto Serif JP', serif;
@@ -187,7 +181,7 @@ body {
 }
 
 .hero-description {
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-bottom: 40px;
     color: var(--color-light-green);
 }
@@ -239,22 +233,26 @@ body {
     .hamburger-menu {
         display: flex;
     }
-    .hero-main-content {
+    .hero-section {
         flex-direction: column; /* モバイルでは縦並び */
+        height: auto; /* 高さを自動調整 */
+        min-height: 100vh; /* 画面いっぱいに広げる */
     }
-    .hero-image-area,
+    .hero-image-left,
+    .hero-image-right {
+        position: relative; /* モバイルでは通常フロー */
+        width: 100%;
+        height: 35vh; /* 画像エリアの高さ */
+    }
+    .hero-image-right {
+        order: 1; /* 左の画像エリアの後に表示 */
+    }
     .hero-content-area {
         width: 100%;
-        min-width: auto;
-    }
-    .hero-image-area {
-        height: 250px; /* モバイルでの画像エリアの高さ調整 */
-    }
-    .hero-image-pair .hero-image {
-        height: auto; /* 高さを自動調整 */
-    }
-    .hero-content-area {
         padding: 30px 15px;
+        background-color: var(--color-deep-green); /* 不透明にする */
+        box-shadow: none;
+        order: 2; /* 左右の画像エリアの間に表示 */
     }
     .hero-catchphrase {
         font-size: 2.5em;
