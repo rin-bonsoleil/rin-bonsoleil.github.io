@@ -105,6 +105,13 @@ body {
     border: 2px solid rgba(255,255,255,0.1);
 }
 
+/* AIエージェント Rinの写真だけ全体が見えるように調整 */
+.profile-gallery img[src*="profile_5_5.jpg"] {
+    object-fit: contain;
+    background-color: white; /* 背景が白のイラストなので馴染むように */
+}
+
+
 /* 複数写真がある場合の調整 */
 .profile-gallery img:only-child {
     max-width: 500px;
