@@ -133,6 +133,11 @@ body {
     flex-wrap: nowrap; /* デスクトップでは横並び固定 */
 }
 
+.profile-gallery.vertical {
+    flex-direction: column;
+    flex: 0.8;
+}
+
 .profile-gallery img {
     width: calc(50% - 7.5px);
     max-width: 400px;
@@ -141,6 +146,12 @@ body {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     border: 2px solid rgba(255,255,255,0.1);
+}
+
+.profile-gallery.vertical img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
 }
 
 /* 1枚のみ */
