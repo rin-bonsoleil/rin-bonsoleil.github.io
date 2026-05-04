@@ -95,6 +95,14 @@ body {
     justify-content: center;
 }
 
+.profile-gallery {
+    flex: 1;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: nowrap; /* 写真を横並びに固定 */
+}
+
 .profile-gallery img {
     width: 100%;
     max-width: 400px;
@@ -105,10 +113,17 @@ body {
     border: 2px solid rgba(255,255,255,0.1);
 }
 
-/* AIエージェント Rinの写真だけ全体が見えるように調整 */
-.profile-gallery img[src*="profile_5_5.jpg"] {
+/* ダンス写真（趣味と情熱）の特別な調整 */
+.dance-gallery {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.dance-gallery img.full-width {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
     object-fit: contain;
-    background-color: white; /* 背景が白のイラストなので馴染むように */
 }
 
 
@@ -121,7 +136,8 @@ body {
 }
 
 .profile-links a {
-    color: var(--color-light-green);
+    color: var(--color-gold); /* リンクを目立たせる */
+    font-weight: bold;
     text-decoration: underline;
 }
 
