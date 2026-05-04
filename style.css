@@ -153,7 +153,7 @@ body {
 }
 
 .hero-catchphrase {
-    font-size: 3em;
+    font-size: 2.8em; /* フォントサイズを一つ下げる */
     margin-bottom: 20px;
     line-height: 1.2;
     font-family: 'Noto Serif JP', serif;
@@ -161,7 +161,7 @@ body {
 }
 
 .accent-text {
-    color: var(--color-accent-red-maple);
+    color: var(--color-light-green); /* ここを淡い黄緑色に変更 */
     font-weight: bold;
 }
 
