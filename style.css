@@ -205,7 +205,6 @@ body {
 /* ホームステイセクション */
 .homestay-intro .profile-gallery img {
     object-fit: contain;
-    background-color: white;
 }
 .homestay-intro { margin-bottom: 60px; }
 .caution { color: var(--color-gold); font-weight: bold; margin-top: 15px; }
