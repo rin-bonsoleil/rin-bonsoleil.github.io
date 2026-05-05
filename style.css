@@ -308,7 +308,9 @@ body {
 }
 .pricing-card h3 { color: var(--color-gold); margin-bottom: 15px; }
 .price { font-size: 2em; font-weight: bold; color: var(--color-light-peach); }
+.price small { font-size: 0.5em; font-weight: normal; vertical-align: middle; }
 .price-detail { font-size: 0.9em; opacity: 0.8; }
+.price-detail small { font-size: 0.8em; }
 
 .pricing-details { display: flex; gap: 40px; margin-bottom: 60px; }
 .price-list { flex: 1; }
