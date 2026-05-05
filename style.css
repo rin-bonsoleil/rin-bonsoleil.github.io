@@ -203,7 +203,10 @@ body {
 .pattern-2 { background-color: var(--color-deep-green); color: var(--color-light-green); }
 
 /* ホームステイセクション */
-.homestay-section { padding: 80px 0; }
+.homestay-intro .profile-gallery img {
+    object-fit: contain;
+    background-color: white;
+}
 .homestay-intro { margin-bottom: 60px; }
 .caution { color: var(--color-gold); font-weight: bold; margin-top: 15px; }
 
