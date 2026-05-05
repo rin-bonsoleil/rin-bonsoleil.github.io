@@ -244,6 +244,16 @@ body {
     height: auto;
     min-height: 400px;
 }
+.dual-slideshow-wrapper.vertical-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+}
+.dual-slideshow-wrapper.vertical-stack .dual-slideshow {
+    flex: 1;
+    height: 200px; /* 合計400px強になるように調整 */
+}
 .activity-card.wide .activity-content-wrapper {
     flex: 1;
     display: flex;
