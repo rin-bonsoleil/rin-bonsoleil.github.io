@@ -34,4 +34,31 @@ document.addEventListener('DOMContentLoaded', function() {
         heroImagesRight[0].classList.add('active');
         setInterval(showNextImages, 5000); // 5秒ごとに画像を切り替える
     }
+
+    // 2画面並列スライドショー (Homestay Food)
+    const foodSlidesLeft = document.querySelectorAll('#food-slideshow-left .dual-slide');
+    const foodSlidesRight = document.querySelectorAll('#food-slideshow-right .dual-slide');
+    let foodIndex = 0;
+
+    if (foodSlidesLeft.length > 0 && foodSlidesRight.length > 0) {
+        setInterval(() => {
+            foodSlidesLeft[foodIndex].classList.remove('active');
+            foodSlidesRight[foodIndex].classList.remove('active');
+            foodIndex = (foodIndex + 1) % foodSlidesLeft.length;
+            foodSlidesLeft[foodIndex].classList.add('active');
+            foodSlidesRight[foodIndex].classList.add('active');
+        }, 4000);
+    }
+
+    // ミニスライドショー (Camp)
+    const miniSlides = document.querySelectorAll('.mini-slideshow-container .mini-slide');
+    let miniIndex = 0;
+
+    if (miniSlides.length > 0) {
+        setInterval(() => {
+            miniSlides[miniIndex].classList.remove('active');
+            miniIndex = (miniIndex + 1) % miniSlides.length;
+            miniSlides[miniIndex].classList.add('active');
+        }, 3500);
+    }
 });

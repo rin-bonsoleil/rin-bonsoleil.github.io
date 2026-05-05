@@ -197,10 +197,93 @@ body {
     border: 1px solid rgba(192, 240, 200, 0.2);
 }
 
-.profile-message h3 {
-    color: var(--color-gold);
-    font-size: 2em;
-    margin-bottom: 25px;
+/* パターン共通 */
+.pattern-1 { background-color: var(--color-medium-brown); color: var(--color-light-peach); }
+.pattern-1 .section-title { color: var(--color-light-peach); }
+.pattern-2 { background-color: var(--color-deep-green); color: var(--color-light-green); }
+
+/* ホームステイセクション */
+.homestay-section { padding: 80px 0; }
+.homestay-intro { margin-bottom: 60px; }
+.caution { color: var(--color-gold); font-weight: bold; margin-top: 15px; }
+
+/* マッチングガイド */
+.homestay-matching-grid {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 80px;
+}
+.matching-card {
+    flex: 1;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(253, 230, 220, 0.2);
+}
+.matching-card h3 { color: var(--color-gold); margin-bottom: 20px; font-size: 1.3em; }
+.matching-card ul { padding-left: 20px; }
+.matching-card li { margin-bottom: 10px; line-height: 1.5; }
+
+/* アクティビティグリッド */
+.section-subtitle { text-align: center; margin-top: -30px; margin-bottom: 50px; font-size: 1.1em; opacity: 0.9; }
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+.activity-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(253, 230, 220, 0.1);
+}
+.activity-image-wrapper { height: 200px; overflow: hidden; position: relative; }
+.activity-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.activity-content { padding: 20px; flex: 1; }
+.activity-content h3 { color: var(--color-gold); margin-bottom: 15px; font-size: 1.2em; }
+.activity-content p { font-size: 0.95em; line-height: 1.6; }
+.activity-content small { display: block; margin-top: 10px; opacity: 0.8; font-size: 0.85em; }
+
+/* ミニギャラリー & スライドショー */
+.mini-gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; height: 100%; }
+.mini-gallery-grid img { height: 100%; }
+.mini-gallery-grid img:first-child:nth-last-child(3) { grid-row: span 2; }
+
+.mini-slideshow-container { position: relative; height: 100%; }
+.mini-slide { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1s ease; }
+.mini-slide.active { opacity: 1; }
+
+/* 料金セクション */
+.pricing-container { display: flex; gap: 30px; margin-bottom: 40px; }
+.pricing-card {
+    flex: 1;
+    text-align: center;
+    padding: 30px;
+    background-color: var(--color-dark-brown);
+    border-radius: 15px;
+    border: 2px solid var(--color-gold);
+}
+.pricing-card h3 { color: var(--color-gold); margin-bottom: 15px; }
+.price { font-size: 2em; font-weight: bold; color: var(--color-light-peach); }
+.price-detail { font-size: 0.9em; opacity: 0.8; }
+
+.pricing-details { display: flex; gap: 40px; margin-bottom: 60px; }
+.price-list { flex: 1; }
+.price-list h4 { color: var(--color-gold); margin-bottom: 15px; border-bottom: 1px solid var(--color-gold); padding-bottom: 5px; }
+
+/* 2画面並列スライドショー */
+.homestay-food-slideshow-container { width: 100%; margin-top: 40px; }
+.dual-slideshow-wrapper { display: flex; gap: 10px; height: 400px; }
+.dual-slideshow { flex: 1; position: relative; overflow: hidden; border-radius: 10px; }
+.dual-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out; }
+.dual-slide.active { opacity: 1; }
+
+@media (max-width: 768px) {
+    .homestay-matching-grid, .pricing-container, .pricing-details { flex-direction: column; }
+    .dual-slideshow-wrapper { height: 250px; }
 }
 
 /* ヘッダー */
