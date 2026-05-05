@@ -40,14 +40,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const foodSlidesRight = document.querySelectorAll('#food-slideshow-right .dual-slide');
     let foodIndex = 0;
 
-    if (foodSlidesLeft.length > 0 && foodSlidesRight.length > 0) {
-        setInterval(() => {
+    function showNextFoodSlides() {
+        if (foodSlidesLeft.length > 0 && foodSlidesRight.length > 0) {
+            // 現在の画像を非表示
             foodSlidesLeft[foodIndex].classList.remove('active');
             foodSlidesRight[foodIndex].classList.remove('active');
-            foodIndex = (foodIndex + 1) % foodSlidesLeft.length;
+            
+            // 次のインデックス (枚数が違う場合は少ない方に合わせる)
+            const minLength = Math.min(foodSlidesLeft.length, foodSlidesRight.length);
+            foodIndex = (foodIndex + 1) % minLength;
+            
+            // 次の画像を表示
             foodSlidesLeft[foodIndex].classList.add('active');
             foodSlidesRight[foodIndex].classList.add('active');
-        }, 4000);
+        }
+    }
+
+    if (foodSlidesLeft.length > 0 && foodSlidesRight.length > 0) {
+        // 最初の画像をアクティブに固定
+        foodSlidesLeft[0].classList.add('active');
+        foodSlidesRight[0].classList.add('active');
+        setInterval(showNextFoodSlides, 4000);
     }
 
     // キャンプ用 2画面並列スライドショー
