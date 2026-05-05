@@ -273,9 +273,10 @@ body {
 .activity-content small { display: block; margin-top: 10px; opacity: 0.8; font-size: 0.85em; }
 
 /* ミニギャラリー & スライドショー */
-.mini-gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; height: 100%; }
-.mini-gallery-grid img { height: 100%; }
-.mini-gallery-grid img:first-child:nth-last-child(3) { grid-row: span 2; }
+.mini-gallery-grid.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; height: 100%; }
+.mini-gallery-grid.dual-grid img { width: 100%; height: 100%; object-fit: contain; background-color: #fff; }
+
+.small-slideshow { height: 250px !important; }
 
 .mini-slideshow-container { position: relative; height: 100%; }
 .mini-slide { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1s ease; }

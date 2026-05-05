@@ -50,15 +50,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 4000);
     }
 
-    // ミニスライドショー (Camp)
-    const miniSlides = document.querySelectorAll('.mini-slideshow-container .mini-slide');
-    let miniIndex = 0;
+    // キャンプ用 2画面並列スライドショー
+    const campSlidesLeft = document.querySelectorAll('#camp-slideshow-left .dual-slide');
+    const campSlidesRight = document.querySelectorAll('#camp-slideshow-right .dual-slide');
+    let campIndex = 0;
 
-    if (miniSlides.length > 0) {
+    if (campSlidesLeft.length > 0 && campSlidesRight.length > 0) {
         setInterval(() => {
-            miniSlides[miniIndex].classList.remove('active');
-            miniIndex = (miniIndex + 1) % miniSlides.length;
-            miniSlides[miniIndex].classList.add('active');
+            campSlidesLeft[campIndex].classList.remove('active');
+            campSlidesRight[campIndex].classList.remove('active');
+            campIndex = (campIndex + 1) % campSlidesLeft.length;
+            campSlidesLeft[campIndex].classList.add('active');
+            campSlidesRight[campIndex].classList.add('active');
         }, 3500);
     }
 });
