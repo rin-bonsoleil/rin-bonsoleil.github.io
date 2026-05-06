@@ -469,6 +469,9 @@ body {
     font-weight: bold;
     padding: 10px 15px;
     transition: color 0.3s ease;
+    display: block;
+    line-height: 1.2;
+    text-align: center;
 }
 
 .main-nav li a:hover {
