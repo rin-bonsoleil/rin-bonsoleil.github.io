@@ -55,6 +55,98 @@ body {
     background-color: var(--color-deep-red);
 }
 
+/* Cooking Class Section */
+.cooking-class-section {
+    padding: 80px 0;
+}
+
+.category-group {
+    margin-bottom: 50px;
+}
+
+.category-title {
+    font-size: 1.8em;
+    color: var(--color-gold);
+    margin-bottom: 25px;
+    border-left: 5px solid var(--color-deep-red);
+    padding-left: 15px;
+    font-family: 'Noto Serif JP', serif;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+}
+
+.recipe-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid rgba(192, 240, 200, 0.1);
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-gold);
+}
+
+.recipe-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: rgba(255, 255, 255, 0.1); /* 写真がない時のプレースホルダー色 */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* 再生ボタンのアイコン（疑似要素） */
+.recipe-thumb::after {
+    content: '▶';
+    position: absolute;
+    font-size: 1.5em;
+    color: var(--color-light-peach);
+    background: rgba(174, 31, 35, 0.7); /* color-deep-red */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    padding-left: 3px; /* 三角の位置調整 */
+}
+
+.recipe-card:hover .recipe-thumb::after {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.recipe-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recipe-card p {
+    padding: 10px;
+    font-size: 0.9em;
+    margin: 0;
+    font-weight: bold;
+    color: var(--color-light-peach);
+    min-height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* プロフィールセクション */
 .profile-section {
     padding: 80px 0;
